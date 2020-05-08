@@ -19,10 +19,11 @@ const twoSum = function(numberArray, target) {
   let complements = {};
 
   for (let i = 0; i < numberArray.length; i++) {  // Time Complexity => O(n)
-    if (complements[numberArray[i]] >= 0) {
-      return [complements[numberArray[i]], i] // Time Complexity => O(1)
+    const currentNumber = numberArray[i]
+    if (complements.hasOwnProperty(currentNumber)) {
+      return [complements[currentNumber], i] // Time Complexity => O(1)
     } else {
-      complements[target - numberArray[i]] = i; // Time Complexity => O(1)
+      complements[target - currentNumber] = i; // Time Complexity => O(1)
     }
   }
 };
