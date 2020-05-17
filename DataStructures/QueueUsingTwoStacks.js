@@ -7,15 +7,15 @@ class QueueUsingTwoStacks {
   }
 
   #shiftItemsToOldest() {
-    while (!this.stackWithNewestItemOnTop.isEmpty()) {
-      this.stackWithOldestItemOnTop.push(this.stackWithNewestItemOnTop.pop());
+    if(this.stackWithOldestItemOnTop.isEmpty()) {
+      while (!this.stackWithNewestItemOnTop.isEmpty()) {
+        this.stackWithOldestItemOnTop.push(this.stackWithNewestItemOnTop.pop());
+      }
     }
   }
 
   peek() {
-    if(this.stackWithOldestItemOnTop.isEmpty()) {
-      this.#shiftItemsToOldest();
-    }
+    this.#shiftItemsToOldest();
     return this.stackWithOldestItemOnTop.top();
   }
 
@@ -24,9 +24,7 @@ class QueueUsingTwoStacks {
   }
 
   dequeue() {
-    if (this.stackWithOldestItemOnTop.isEmpty()) {
-      this.#shiftItemsToOldest();
-    }
+    this.#shiftItemsToOldest();
     return this.stackWithOldestItemOnTop.pop();
   }
 }
