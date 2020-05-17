@@ -24,7 +24,7 @@ export default class Stack {
    * @return {*} The item at the top of the stack
    */
   top() {
-    return this.storage[this.storage.length - 1];
+    return this.storage[this.storage.length - 1] || null;
   }
 
   /**
@@ -32,6 +32,6 @@ export default class Stack {
    * @return {*} The popped item
    */
   pop() {
-    return this.storage.pop();
+    return this.storage.pop() || null;
   }
 }
