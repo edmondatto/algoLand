@@ -66,3 +66,18 @@ class Node {
     }
   }
 }
+
+/**
+ * Checks whether a BST is valid
+ * @param {Node} root - The root node of the BST to be validated
+ * @param {number} minValue - The minimum permitted value in this BST
+ * @param {number} maxValue - The maximum permitted value in this BST
+ * @return {boolean}
+ */
+function isValidBST(root, minValue = Number.MIN_SAFE_INTEGER, maxValue = Number.MAX_SAFE_INTEGER) {
+  if (root === null) return true;
+
+  if (root.value > maxValue || root.value < minValue) return false;
+
+  return isValidBST(root.left, Number.MIN_SAFE_INTEGER, root.value - 1) && isValidBST(root.right, root.value + 1, Number.MAX_SAFE_INTEGER);
+}
