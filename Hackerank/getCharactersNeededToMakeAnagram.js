@@ -32,7 +32,7 @@ function getCharacterCount(string) {
  * Returns the difference between character counts for two strings
  * @param {number[]} characterCount1 - An array of each character's occurrences in a string
  * @param {number[]} characterCount2 - An array of each character's occurrences in a string
- * @return {number}
+ * @return {number|void}
  */
 function getDelta(characterCount1, characterCount2) {
   if (characterCount1.length !== characterCount2.length) return
