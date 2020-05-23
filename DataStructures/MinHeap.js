@@ -8,7 +8,7 @@ class MinHeap {
    * Returns the heap's size
    * @return {number}
    */
-  getSize() {
+  size() {
     return this.items.length
   }
 
@@ -103,7 +103,14 @@ class MinHeap {
   }
 
   /**
-   * Returns the minimum value in the the heap
+   * Returns the item at the top the the heap
+   */
+  peek() {
+    return this.items[0]
+  }
+
+  /**
+   * Returns the minimum value and removes it from the the heap
    * @return {number}
    */
   poll() {
