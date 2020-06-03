@@ -7,10 +7,11 @@ function minimumPerimeter(area) {
   let width = 1
   let minPerimeter = Number.MAX_SAFE_INTEGER
 
-  while (width < area/2) {
+  while (width < area/2) { // Can further optimise this using Math.sqrt(area)
     const modulo = area % width
     if (modulo === 0) {
       const length = area / width
+      console.log(length, width)
       const currentPerimeter = calculatePerimeter(length, width)
       if (minPerimeter > currentPerimeter) {
         minPerimeter = currentPerimeter
