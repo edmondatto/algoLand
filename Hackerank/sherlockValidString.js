@@ -7,3 +7,13 @@ function isValid(s) {
   }
   return 'NO'
 }
+
+function getCharacterCount(string) {
+  let characterCount = new Map()
+  for (let character of string) {
+    if (!characterCount.has(character)) {
+      characterCount.set(character, 1)
+    }
+  }
+  return characterCount
+}
