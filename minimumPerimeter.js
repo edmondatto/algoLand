@@ -7,12 +7,11 @@ function minimumPerimeter(area) {
   let width = 1
   let minPerimeter = Number.MAX_SAFE_INTEGER
 
-  while (width < area/2) { // Can further optimise this using Math.sqrt(area)
-    const modulo = area % width
-    if (modulo === 0) {
+  while (width <= Math.sqrt(area)) { // O(n^1/2)
+    const isModuloZero = area % width === 0
+    if (isModuloZero) {
       const length = area / width
-      console.log(length, width)
-      const currentPerimeter = calculatePerimeter(length, width)
+      const currentPerimeter = calculatePerimeter(length, width) // O(1)
       if (minPerimeter > currentPerimeter) {
         minPerimeter = currentPerimeter
       }
@@ -31,3 +30,13 @@ function minimumPerimeter(area) {
 function calculatePerimeter(length, width) {
   return 2 * (length + width)
 }
+
+/**
+ *
+ * Big O Analysis
+ *
+ * Total time Complexity, T(n) = O(n^1/2)
+ *
+ * Space time complexity is O(1) i.e. no new data structures are used
+ *
+ */
