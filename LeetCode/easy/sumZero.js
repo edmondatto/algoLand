@@ -21,8 +21,7 @@ function sumZero2(n) { // O(n/2) solution
   const resultArray = []
 
   for (let i = n; i > Math.ceil(n/2); i--) {
-    resultArray.push(i)
-    resultArray.push(-i)
+    resultArray.push(i, -i)
   }
 
   if (n % 2 === 1) resultArray.push(0)
