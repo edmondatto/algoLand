@@ -9,13 +9,7 @@ function subdomainVisits(cpdomains) {
   for (let cpdomain of cpdomains) {
     const [count, domain] = cpdomain.split(' ')
     const subdomains = getSubDomains(domain) // O(100) or O(3) => Approximates constant time
-    for (let subdomain of subdomains) { // O(3) => constant time
-      if (subdomainVisitCount[subdomain]) {
-        subdomainVisitCount[subdomain] += +count
-      } else {
-        subdomainVisitCount[subdomain] = +count
-      }
-    }
+    updateSubdomainVisitCount(subdomainVisitCount, subdomains, count)
   }
 
   for (let key in subdomainVisitCount) {
@@ -23,6 +17,16 @@ function subdomainVisits(cpdomains) {
   }
 
   return result
+}
+
+function updateSubdomainVisitCount (visitCounts, subdomains, count) {
+  for (let subdomain of subdomains) { // O(3) => Approximates constant time
+    if (visitCounts[subdomain]) {
+      visitCounts[subdomain] += +count
+    } else {
+      visitCounts[subdomain] = +count
+    }
+  }
 }
 
 function getSubDomains (domain) { // O(3) but uses more memory on the slice step
