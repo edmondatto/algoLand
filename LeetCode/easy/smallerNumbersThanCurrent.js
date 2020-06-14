@@ -14,3 +14,22 @@ function smallerNumbersThanCurrent(nums) { // O(n^2)
   }
   return result
 }
+
+function smallerNumbersThanCurrent2(nums) { // O(n)
+  const sortedArray = [...nums].sort(function (a,b) {return a - b})
+  let result = []
+  let countMap = {}
+  countMap[sortedArray[0]] = 0
+
+  for (let i = 1; i < sortedArray.length; i++) {
+    if (!countMap[sortedArray[i]] && sortedArray[i] > sortedArray[i - 1]) {
+      countMap[sortedArray[i]] = i
+    }
+  }
+
+  for (let num of nums) {
+    result.push(countMap[num])
+  }
+
+  return result
+}
