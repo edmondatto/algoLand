@@ -12,7 +12,7 @@ function balancedStringSplit(s) {
       charsToMatch.push(s[i])
     } else {
         charsToMatch.pop()
-        if (charsToMatch.length === 0) count++
+        charsToMatch.length === 0 && count++
     }
   }
   return count
