@@ -7,15 +7,12 @@ function balancedStringSplit(s) {
   let charsToMatch = []
 
   for (let i = 0; i < s.length; i++) {
-    if (charsToMatch.length === 0) {
+    const top = charsToMatch[charsToMatch.length - 1]
+    if (!charsToMatch.length || s[i] === top) {
       charsToMatch.push(s[i])
     } else {
-      if (s[i] !== charsToMatch[charsToMatch.length - 1]) {
         charsToMatch.pop()
         if (charsToMatch.length === 0) count++
-      } else {
-        charsToMatch.push(s[i])
-      }
     }
   }
   return count
@@ -35,4 +32,4 @@ function balancedStringSplit2(s) {
   return stringsCount
 }
 
-console.log(balancedStringSplit2("RLRRLLRLRL"))
+console.log(balancedStringSplit("RLRRLLRLRL"))
