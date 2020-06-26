@@ -34,3 +34,24 @@ function interpret(value, commands, args) {
   }
   return value
 }
+
+function interpret2(value, commands, args) {
+  const commandsMap = {
+    '+': (value, arg) => value + arg,
+    '-': (value, arg) => value - arg,
+    '*': (value, arg) => value * arg,
+    '/': (value, arg) => value / arg,
+  }
+
+  let i = 0
+
+  while (i < commands.length) {
+    const command = commandsMap[commands[i]]
+    if (!command) return -1
+
+    const arg = args[i]
+    value = command(value, arg)
+    i++
+  }
+  return value
+}
