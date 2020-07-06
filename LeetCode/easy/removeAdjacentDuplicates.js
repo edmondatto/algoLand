@@ -15,3 +15,16 @@ function removeDuplicates(S) {
   }
   return S
 }
+
+function removeDuplicates2(S) {
+  let stack = []
+
+  for (let i = 0; i < S.length; i++) {
+    if (stack.length > 0 && S[i] === stack[stack.length - 1]) {
+      stack.pop()
+    } else {
+      stack.push(S[i])
+    }
+  }
+  return stack.join('')
+}
